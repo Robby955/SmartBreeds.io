@@ -1,0 +1,198 @@
+document.addEventListener('DOMContentLoaded', function () {
+    const startGameBtn = document.getElementById('start-game-btn');
+    const breedOfRoundElement = document.getElementById('breed-of-round');
+    const homeButton = document.getElementById('home-button'); // Add this line to get the home button
+    const playAgainBtn = document.getElementById('play-again'); // Add this line to get the play again button
+
+    startGameBtn.addEventListener('click', () => {
+        startGame();
+        document.getElementById('instructions').textContent = "Select the correct dog breed image based on the question. Try to guess as many as you can!";
+        startGameBtn.style.display = 'none'; // Hide start button after game starts
+        homeButton.style.display = 'inline-block'; // Show home button when game starts
+        playAgainBtn.style.display = 'none'; // Hide play again button when game starts
+    });
+
+    breedOfRoundElement.textContent = "Click 'Start Game' to play!"; // Placeholder text before game starts
+
+    if (startGameBtn) {
+        startGameBtn.addEventListener('click', () => {
+            startGame();
+            startGameBtn.style.display = 'none'; // Hide start button after game starts
+            homeButton.style.display = 'inline-block'; // Show home button when game starts
+            playAgainBtn.style.display = 'none'; // Hide play again button when game starts
+        });
+    } else {
+        console.error('Start game button not found');
+    }
+
+    const MAX_ROUNDS = 5; // Number of rounds
+    const ROUND_DURATION = 30; // Duration of each round in seconds
+    let currentRound = 0;
+    let score = 0;
+    let timerInterval;
+
+    function startGame() {
+        currentRound = 0;
+        score = 0;
+        loadGameData();
+        startTimer();
+        startGameBtn.style.display = 'none'; // Hide start button after starting the game
+        homeButton.style.display = 'inline-block'; // Show home button when game starts
+        playAgainBtn.style.display = 'none'; // Hide play again button when game starts
+    }
+
+    document.getElementById('start-game-btn').addEventListener('click', () => {
+        startGame();
+        document.getElementById('start-game-btn').style.display = 'none'; // Hide start button after game starts
+        document.getElementById('instructions').style.display = 'none'; // Hide instructions after game starts
+    });
+
+    function formatBreedName(breedName) {
+        // Remove the breed code, split the name, capitalize each word, and join them back together
+        return breedName.replace(/n\d+-/, '').split('_').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+    }
+
+    document.getElementById('play-again').style.display = 'none'; // Hide "Play Again" initially
+
+    function loadGameData() {
+        fetch('/game/game_data')
+            .then(response => response.json())
+            .then(data => {
+                displayGameData(data);
+            });
+    }
+
+    function displayGameData(data) {
+        breedOfRoundElement.textContent = `Which one is a ${formatBreedName(data.breedOfRound)}?`;
+
+        const imageContainer = document.getElementById('image-container');
+        imageContainer.innerHTML = '';  // Clear existing images
+
+        const breeds = Object.keys(data.images);
+        const selectedBreeds = getRandomBreeds(breeds, 5);
+
+        selectedBreeds.forEach(breed => {
+            const breedImages = data.images[breed];
+            const randomImage = breedImages[Math.floor(Math.random() * breedImages.length)];
+            const imgElement = document.createElement('img');
+            imgElement.src = `/game/image/${encodeURIComponent(randomImage)}`;
+            imgElement.alt = 'Dog image';
+            imgElement.classList.add('game-image');
+            imgElement.addEventListener('click', () => submitGuess(data.breedOfRound, breed));
+            imageContainer.appendChild(imgElement);
+        });
+    }
+
+    function getRandomBreeds(breeds, numBreeds) {
+        const selectedBreeds = [];
+        while (selectedBreeds.length < numBreeds) {
+            const randomBreed = breeds[Math.floor(Math.random() * breeds.length)];
+            if (!selectedBreeds.includes(randomBreed)) {
+                selectedBreeds.push(randomBreed);
+            }
+        }
+        return selectedBreeds;
+    }
+
+    document.getElementById('play-again').addEventListener('click', () => {
+        location.reload(); // Reloads the current page to restart the game
+    });
+
+    function startTimer() {
+        // Ensure timerElement is defined within the scope of startTimer
+        const timerElement = document.getElementById('timer');
+        if (!timerElement) {
+            console.error('Timer element not found');
+            return;
+        }
+
+        let secondsLeft = ROUND_DURATION;
+        timerElement.textContent = `Time left: ${secondsLeft} seconds`;
+
+        timerInterval = setInterval(() => {
+            if (secondsLeft > 0) {
+                secondsLeft--;
+                timerElement.textContent = `Time left: ${secondsLeft} seconds`;
+            } else {
+                clearInterval(timerInterval);
+                if (currentRound < MAX_ROUNDS) {
+                    nextRound();
+                }
+            }
+        }, 1000);
+    }
+
+    function submitGuess(correctBreed, userGuess) {
+        if (currentRound >= MAX_ROUNDS) {
+            return; // Stop processing if max rounds reached
+        }
+        clearInterval(timerInterval); // Stop the timer
+
+        const formData = new FormData();
+        formData.append('correct_breed', correctBreed);
+        formData.append('user_guess', userGuess);
+
+        fetch('/game/submit_guess', {
+            method: 'POST',
+            body: formData
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data.correct) {
+                    score++; // Increment score if guess is correct
+                }
+                displayResponse(data);
+                nextRound();
+            });
+    }
+
+    function displayResponse(data) {
+        const feedbackElement = document.getElementById('feedback');
+        clearTimeout(window.feedbackTimeout);  // Clear any existing timeout
+
+        // Display the message and set the color based on whether the answer is correct
+        feedbackElement.textContent = data.message;
+        feedbackElement.style.color = data.correct ? 'green' : 'red';
+
+        // Set a timeout to clear the feedback message after 3 seconds without automatically proceeding to the next round
+        window.feedbackTimeout = setTimeout(() => {
+            feedbackElement.textContent = '';
+        }, 3000);
+    }
+
+    function nextRound() {
+        currentRound++;
+        const roundElement = document.getElementById('current-round');
+        roundElement.textContent = `Round: ${currentRound}`;
+        const scoreElement = document.getElementById('current-score');
+        scoreElement.textContent = `Score: ${score}`;
+
+        if (currentRound < MAX_ROUNDS) {
+            // Reset timer
+            startTimer();
+            // Load data for the next round
+            loadGameData();
+        } else {
+            // Game over, display final score
+            const feedbackElement = document.getElementById('feedback');
+            playAgainBtn.style.display = 'block';  // Show "Play Again" button
+            feedbackElement.textContent = `Game over! Your final score is: ${score} / ${MAX_ROUNDS}`;
+        }
+    }
+
+    // Function to reload the game
+    function playAgain() {
+        window.location.reload();
+    }
+
+    // Function to navigate to the home page
+    function goToHome() {
+        window.location.href = '/'; // Adjust if your home route is different
+    }
+
+    // Assuming you have buttons with these IDs in your HTML
+    document.getElementById('play-again').addEventListener('click', playAgain);
+    document.getElementById('home-button').addEventListener('click', goToHome);
+
+    function showFeedback(message, isSuccess) { /* implementation */ }
+});

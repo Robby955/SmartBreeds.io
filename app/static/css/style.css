@@ -1,0 +1,417 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: 'Open Sans', sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+main {
+    padding-top: 20px; /* Reduced padding-top if it's currently larger */
+    flex: 1;
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; /* Aligns content to start of the container */
+}
+
+/* Header */
+header {
+    background-color: #2C3E50;
+    color: white;
+    text-align: center;
+    padding: 5px 10px; /* Modest padding to keep header slim */
+    font-size: 0.85em; /* Adjusted for readability */
+    width: 100%;
+    box-sizing: border-box;
+}
+
+header img {
+    max-height: 200px; /* Adjust to desired size without making it too large */
+}
+
+
+
+#image-preview-container {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 10px;  /* Space before the results */
+}
+
+#confirmation-container.active {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 20; /* Higher to overlay */
+    background-color: white;
+    padding: 20px;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 300px; /* Maximum width similar to buttons or as needed */
+    width: auto; /* Auto width to allow content to dictate actual width */
+    box-sizing: border-box; /* Include padding and border in the width */
+    text-align: center;
+    display: block; /* Change to block to allow the use of max-width */
+    margin: 0 auto; /* Auto margins for horizontal centering */
+}
+
+#confirmation-container {
+    border: 2px solid #3498db; /* Change color and thickness as needed */
+    padding: 15px; /* Adjust padding to ensure content is not too close to the border */
+    margin-top: 20px; /* Space from the previous content */
+    background-color: #ecf0f1; /* Light grey background */
+    text-align: center; /* Centering the text inside the box */
+    max-width: 300px; /* Adjust width as needed */
+    box-sizing: border-box; /* Include padding and border in the width */
+    display: block; /* Block display to respect max-width */
+    margin: 0 auto; /* Auto margins for horizontal centering */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Optional: adds a subtle shadow for depth */
+}
+
+/* Main content area */
+/* Main content area */
+main {
+    flex: 1; /* Allows the main content to fill the available space */
+    padding-top: 10px; /* Small padding from the header */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+/* Main Section Styling */
+.main-section {
+    position: static;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    padding-bottom: 50px;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+nav a {
+    color: #FFFFFF; /* White text for links */
+    text-decoration: none;
+    padding: 0 15px;
+    font-weight: bold;
+}
+
+nav a:hover {
+    color: #F1C40F; /* Gold color on hover */
+    text-decoration: underline;
+}
+
+/* Add a specific class or ID if the welcome message is separate from nav */
+.welcome-message {
+    color: #FFFFFF; /* Ensuring the welcome message is visible */
+    padding: 0 10px;
+}
+
+/* If the welcome message is within nav, adjust the CSS selector accordingly */
+nav .welcome-message {
+    color: #FFFFFF;
+    padding-right: 10px;
+}
+
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black;
+}
+
+
+
+#upload-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* This will center all children, including buttons */
+    padding: 20px;
+    width: 100%; /* Adjust if necessary */
+}
+
+#file-label {
+    cursor: pointer;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: #3498db;
+    color: white;
+    border-radius: 5px;
+    margin-bottom: 10px; /* Space between the label and the next button */
+    width: 200px; /* Ensures width is consistent */
+    text-align: center;
+}
+
+.classify-button {
+    padding: 10px 20px;
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    width: 200px; /* Matching width to ensure alignment */
+    cursor: pointer;
+}
+
+#classify-btn {
+    padding: 10px 20px;
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    width: 200px;        // Ensures width consistency with the file label
+    cursor: pointer;
+}
+
+#classify-btn:hover {
+    background-color: #c0392b;
+}
+
+
+/* Icon */
+.icon {
+    margin-right: 0.5em;
+}
+
+#file-label:hover {
+    background-color: #2980b9;
+    width: 200px;
+}
+
+/* Icon */
+.icon {
+    margin-right: 0.5em;
+}
+
+/* File Input */
+input[type="file"] {
+    display: none;
+}
+
+/* Hidden Button */
+button.hidden {
+    display: none;
+}
+body {
+    background-color: #f0f4f7; /* Choose a light, pleasant color */
+}
+
+
+/* Classify Button */
+button.classify-button {
+    padding: 1em;
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 1em;
+    width: 200px; /* Adjust the width as needed */
+}
+
+button.classify-button:hover {
+    background-color: #c0392b;
+}
+
+/* Result Section */
+
+
+/* Hidden Elements */
+.hidden {
+    display: none;
+}
+
+/* Confirmation Dialog */
+#confirmation-container, #result-section {
+    position: static;
+    width: 100%;
+    margin-top: 20px;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+#confirmation-container p {
+    margin-bottom: 10px;
+}
+
+.confirmation-btn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    margin: 5px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.confirmation-btn:hover {
+    background-color: #45a049;
+}
+
+/* Image Preview */
+#image-preview-container {
+    text-align: center; /* Centers the image preview */
+    margin-top: 20px; /* Reduce if needed */
+    margin-bottom: 10px; /* Reduces the gap to the next section */
+}
+
+#image-preview {
+    max-width: 100%;
+    max-height: 200px;
+    margin: 0 auto;
+    display: block;
+}
+#image-preview-container .icon {  /* Assuming the symbol has a class 'icon' */
+    display: none;  /* Hides the icon */
+}
+
+
+#image-preview-container p,
+#image-preview-container .icon {  /* Hides any paragraphs or icons within the container */
+    display: none;  /* Element will not be displayed */
+}
+
+
+
+/* Breed Dropdown */
+#breed-dropdown {
+    display: none;
+    text-align: center;
+}
+
+#breed-select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+#submit-correct-breed {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#submit-correct-breed:hover {
+    background-color: #45a049;
+}
+
+#yes-know-btn, #no-know-btn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    margin: 5px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#yes-know-btn:hover, #no-know-btn:hover {
+    background-color: #45a049;
+}
+
+/* Breed Search Input */
+.breed-search-input {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* General Styles for the Footer */
+footer {
+    width: 100%;
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    box-sizing: border-box;
+    position: relative;  /* This should not be necessary with Flexbox, but it won't hurt */
+    margin-top: auto;  /* This is critical as it pushes the footer to the bottom */
+}
+/* Specific Styles for .site-footer (if different styling is needed) */
+.site-footer {
+    position: relative;
+    height: auto; /* Removed fixed height to allow natural content height */
+    line-height: 1.2; /* Reduced line height for tighter text */
+    font-size: 12px; /* Smaller font size */
+    padding: 5px 0; /* Even less padding inside the footer */
+}
+
+
+/* Styling Links and Text in the Footer */
+.site-footer p, .site-footer a {
+    color: #bbb;  /* Light grey text color */
+    line-height: 1.5;
+    margin: 0;  /* Remove margin */
+    padding: 0;  /* No padding */
+}
+
+.site-footer a:hover {
+    color: #fff;  /* White text on hover for better visibility */
+}
+
+/* Styling for Footer Links */
+.footer-links ul {
+    list-style: none;  /* No bullets */
+    padding: 0;  /* No padding */
+    display: inline-block;  /* Inline block for horizontal layout */
+}
+
+.footer-links ul li {
+    display: inline;  /* Inline display for items */
+    margin-right: 20px;  /* Spacing between items */
+}
+/* Remove styles related to the sections we're deleting */
+.social-icon, .footer-contact, .footer-social {
+    display: none;
+}
+
+
+.shepherd-element {
+    z-index: 10000 !important; /* Ensures tour elements are above other content */
+}
+
+.shepherd-content {
+    font-family: 'Open Sans', sans-serif;
+    color: #333;
+}
+
+.shepherd-footer {
+    display: flex;
+    justify-content: space-between;
+}
+
+.shepherd-button {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.shepherd-button:hover {
+    background-color: #2980b9;
+}

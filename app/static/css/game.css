@@ -1,0 +1,132 @@
+/* General Body and Layout Styles */
+body {
+    font-family: 'Roboto', sans-serif; /* Clean and modern font */
+    background: linear-gradient(to right, #84fab0, #8fd3f4); /* Subtle gradient from green to blue */
+    color: #333;
+    margin: 0;
+    padding: 20px;
+    text-align: center;
+    height: 100vh; /* Full view height */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+h1 {
+    color: #2C3E50; /* SmartBreed blue for headers */
+    font-size: 2.8rem;
+    margin-bottom: 20px;
+}
+
+/* Container for Images and Buttons */
+.image-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+}
+
+/* Styling for Dog Breed Images */
+.game-image {
+    width: 200px; /* Uniform image size */
+    height: 200px;
+    object-fit: contain; /* Ensures the whole image is visible */
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Subtle shadow for depth */
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease;
+    background-color: white; /* Adds a background color for images with transparency */
+}
+
+.game-image.correct {
+    border: 5px solid green; /* Highlight correct image */
+}
+
+.game-image.incorrect {
+    border: 5px solid red; /* Highlight incorrect image */
+}
+
+.game-image:hover {
+    transform: scale(1.1); /* Slight zoom on hover */
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2); /* Enhanced shadow on hover */
+}
+
+/* Button Styles */
+button {
+    background-color: #2C3E50; /* SmartBreed blue for buttons */
+    border: none;
+    color: white;
+    padding: 12px 24px;
+    font-size: 16px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: background-color 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #1A2A40; /* Darker blue on hover */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+/* Feedback and Timer Display */
+#feedback, #timer, #current-round, #current-score {
+    font-size: 1.2rem;
+    margin-top: 20px;
+    color: #364f6b; /* Consistent dark blue for text */
+}
+
+#play-again, #home-button {
+    display: none; /* Hide until game over */
+    margin-top: 20px;
+}
+
+.instructions {
+    font-size: 1rem;
+    color: #6c5b7b; /* Subtle purple for a soft contrast */
+    margin: 10px 0;
+}
+
+.hidden {
+    display: none;
+}
+
+.question-style {
+    font-size: 1.8em;
+    font-weight: bold;
+    margin: 20px 0;
+    color: #2C3E50; /* SmartBreed blue for the question */
+}
+
+#loading {
+    font-size: 1.5rem;
+    color: #2C3E50; /* SmartBreed blue for loading text */
+    margin: 20px 0;
+}
+
+/* Responsive Design for Smaller Screens */
+@media (max-width: 600px) {
+    .game-image {
+        width: 100px; /* Smaller images on small screens */
+        height: 100px;
+    }
+
+    h1 {
+        font-size: 2rem; /* Smaller header on small screens */
+    }
+
+    button {
+        padding: 8px 16px;
+        font-size: 14px;
+    }
+}
+/* Additional CSS to enhance border visibility */
+.game-image.correct {
+    border: 5px solid green;
+    border-radius: 10px;
+}
+
+.game-image.wrong {
+    border: 5px solid red;
+    border-radius: 10px;
+}

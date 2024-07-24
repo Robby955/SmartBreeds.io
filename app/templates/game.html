@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Guess the Breed!</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/game.css') }}">
+</head>
+<body>
+    <div class="game-container">
+        <h1>Guess the Breed!</h1>
+        <button id="timed-mode-btn" class="game-button" aria-label="Start Timed Mode">Timed Mode</button>
+        <button id="endless-mode-btn" class="game-button" aria-label="Start Endless Mode">Endless Mode</button>
+
+        <!-- Initial instructions that will disappear when the game starts -->
+        <div id="initial-instructions">
+            <p id="game-instructions">Click the 'Timed Mode' or 'Endless Mode' button to begin. Select the correct dog breed image based on the question. Try to guess as many as you can!</p>
+        </div>
+
+        <!-- Hidden question that becomes visible and styled prominently when the game starts -->
+        <p id="question" class="hidden question-style">Which one is a <span id="breed-of-round"></span>?</p>
+        <div class="image-container" id="image-container"></div>
+        <div id="feedback" class="feedback"></div>
+
+        <!-- Score and Round elements initially hidden, shown during the game -->
+        <p id="timer" class="timer hidden"></p>
+        <p id="current-round" class="current-round hidden"></p>
+        <p id="current-score" class="current-score hidden"></p>
+        <p id="lives" class="lives hidden"></p> <!-- Lives element for Endless mode -->
+
+        <!-- Loading text displayed while images are being fetched -->
+        <div id="loading" class="hidden">Loading...</div>
+
+        <div id="high-score" class="hidden">High Score: N/A</div> <!-- New High Score element -->
+
+        <div class="instructions">
+            <button id="play-again" class="game-button hidden" aria-label="Play again">Play Again</button>
+            <button id="home-button" class="game-button hidden" onclick="location.href='/'" aria-label="Return home">Home</button>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='js/game.js') }}"></script>
+</body>
+</html>

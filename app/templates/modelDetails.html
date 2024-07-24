@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Model Details</title>
+    <link rel="stylesheet" href="style.css"> <!-- If you have a stylesheet -->
+    <script src="script.js"></script> <!-- If you have a JavaScript file -->
+</head>
+<body>
+    <h1>Model Performance Details</h1>
+    <label for="breed-select">Choose a breed:</label>
+    <select name="breeds" id="breed-select" onchange="updateBreedDetails()">
+        <!-- Options will be populated here -->
+    </select>
+
+    <div id="breed-details">
+        <!-- Model performance details and images for the selected breed will be displayed here -->
+    </div>
+
+    <script>
+        // JavaScript to dynamically populate breed options and update details
+        const breeds = ["Chihuahua", "Pug", "Beagle", ...]; // Populate this array based on your model's breeds
+
+        // Function to update the breed details based on the selected option
+        function updateBreedDetails() {
+            const selectedBreed = document.getElementById('breed-select').value;
+            // Fetch and display the details for the selected breed
+            // This could involve AJAX requests to your server to fetch the data
+        }
+
+        // Populate the dropdown with breed options
+        window.onload = function() {
+            const select = document.getElementById('breed-select');
+            breeds.forEach(breed => {
+                let option = document.createElement('option');
+                option.value = breed;
+                option.textContent = breed;
+                select.appendChild(option);
+            });
+        }
+    </script>
+</body>
+</html>

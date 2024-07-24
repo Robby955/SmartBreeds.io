@@ -1,0 +1,15 @@
+<!-- view_responses.html -->
+{% extends "base.html" %}  <!-- Extend your base template -->
+{% block content %}
+<h2>Image Responses</h2>
+<ul>
+    {% for response in responses %}
+    <li>
+        <strong>Image Path:</strong> {{ response.file_path }}<br>
+        <strong>Predicted Breed</strong> {{ response.predicted_breed }}<br>
+        <strong>User Label:</strong> {{ response.user_answer }}<br>
+        <strong>Uploaded At:</strong> {{ response.uploaded_at }}
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}

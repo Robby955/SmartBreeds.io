@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Classification Submissions</h2>
+<ul>
+    {% for submission in submissions %}
+    <li>Submission Time: {{ submission.submission_time }}</li>
+    {% endfor %}
+</ul>
+{% endblock %}

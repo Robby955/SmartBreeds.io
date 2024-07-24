@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Breed Classification Results</title>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        h2 {
+            color: #2C3E50;
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 2em;
+        }
+
+        p {
+            font-size: 1.1em;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .display {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        .display th, .display td {
+            padding: 12px 15px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+
+        .display th {
+            background-color: #f9f9f9;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .display th .tooltiptext {
+            visibility: hidden;
+            width: 200px;
+            background-color: #555;
+            color: #fff;
+            text-align: center;
+            border-radius: 5px;
+            padding: 5px;
+            position: absolute;
+            z-index: 1;
+            bottom: 100%;
+            left: 50%;
+            margin-left: -100px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .display th:hover .tooltiptext {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .display td {
+            background-color: #fff;
+        }
+
+        .breed-link {
+            color: #007bff;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .breed-link:hover {
+            color: #0056b3;
+            text-decoration: underline;
+        }
+
+        .dataTables_wrapper .dataTables_length select,
+        .dataTables_wrapper .dataTables_filter input {
+            border: 1px solid #ddd;
+            border-radius: 0.3em;
+            padding: 0.5em;
+        }
+
+        .table-container {
+            overflow-x: auto;
+        }
+
+        @media (max-width: 768px) {
+            .display, .display th, .display td {
+                display: block;
+                width: 100%;
+            }
+
+            .display th {
+                text-align: right;
+            }
+
+            .display td {
+                text-align: right;
+                padding-left: 50%;
+                text-align: left;
+                position: relative;
+            }
+
+            .display td:before {
+                content: attr(data-label);
+                position: absolute;
+                left: 0;
+                width: 50%;
+                padding-left: 15px;
+                font-weight: bold;
+                text-align: left;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2><i class="fas fa-paw"></i> Breed Classification Results</h2>
+        <p>
+            The following results showcase the performance of our breed classification model. This model has been fine-tuned to recognize different dog breeds.
+        </p>
+        <p>
+            On the test dataset, the model achieved an accuracy of 83.53% across all breeds, demonstrating high precision and recall in most cases. The table below provides detailed metrics for each breed, including precision, recall, and F1-score, which indicate the model's effectiveness in identifying each breed correctly.
+        </p>
+        <p>
+            To view detailed images of each breed, click on the breed name in the table. Each breed's detail page provides a selection of images used during training and testing, illustrating the model's predictions versus the actual labels.
+        </p>
+        <div class="table-container">
+            <table id="resultsTable" class="display">
+                <thead>
+                    <tr>
+                        <th>Breed</th>
+                        <th class="tooltip">Precision<span class="tooltiptext">The proportion of positive identifications that were actually correct.</span></th>
+                        <th class="tooltip">Recall<span class="tooltiptext">The proportion of actual positives that were correctly identified.</span></th>
+                        <th class="tooltip">F1-Score<span class="tooltiptext">The harmonic mean of precision and recall.</span></th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+
+    <!-- Include jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+    <!-- Include DataTables -->
+    <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+
+    <script>
+    $(document).ready(function() {
+        $('#resultsTable').DataTable({
+            "ajax": {
+                "url": "/api/results",
+                "dataSrc": ""
+            },
+            "columns": [
+                {
+                    "data": "Breed",
+                    "render": function(data, type, row, meta) {
+                        if (type === 'display') {
+                            var encodedData = encodeURIComponent(data);
+                            return '<a href="/breed/' + encodedData + '" class="breed-link">' + data + '</a>';
+                        }
+                        return data;
+                    }
+                },
+                { "data": "precision" },
+                { "data": "recall" },
+                { "data": "f1-score" }
+            ],
+            "pageLength": 50
+        });
+    });
+    </script>
+</body>
+</html>
