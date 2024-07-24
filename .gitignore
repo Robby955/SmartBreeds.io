@@ -1,0 +1,81 @@
+# Ignore virtual environments
+.venv/
+.env
+
+# Ignore instance and migrations directories
+instance/
+migrations/
+
+# Ignore training and model files
+models/
+training_history/
+result_summary*
+confusion_matrices/
+conf_matrix/
+global_best_weights.weights.h5
+best_model.keras
+fine_tuned_model_weights.weights.h5
+use_model.keras
+updated_classifier.h5
+best_classifier_model.h5
+best_model_weights.weights.h5
+
+# Ignore databases
+*.sqlite3
+*.db
+identifier.sqlite
+mydata.db
+test.db
+
+# Ignore configuration files
+*.yaml
+*.json
+firebase.json
+database.rules.json
+
+# Ignore logs
+*.log
+
+# Ignore temporary and cached files
+*.pyc
+__pycache__/
+*.bak
+*.swp
+
+# Ignore large data and result files
+*.png
+*.jpg
+*.jpeg
+*.csv
+*.txt
+*.h5
+*.weights
+
+# Ignore directories for scripts, models, and data
+gcswork/
+gcswork.py
+training_plots_20240403-204919.png
+most_common_misclassifications.csv
+combined_metrics_history_20240403-204919.csv
+result_summary/
+downloaded_model/
+all_breeds_root/
+
+# Ignore miscellaneous files
+analyzeModel.py
+app.log
+breed_names.txt
+custom_metrics*
+scrape.py
+generateImage.py
+viewClass.py
+lookatDir.py
+ideas.txt
+gpu_setup.py
+getFiles.py
+
+# Ignore any hidden system files
+.DS_Store
+Thumbs.db
+.gcloudignore
+.gitignor
