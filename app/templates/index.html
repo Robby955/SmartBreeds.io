@@ -10,7 +10,7 @@
             margin: 0;
             padding: 0;
             font-family: 'Roboto', sans-serif;
-            background-image: url('{{ url_for('static', filename='images/godbackground.jpeg') }}');
+            background-image: url('{{ url_for('static', filename='images/dogbackground.jpeg') }}');
             background-size: cover;
             background-repeat: no-repeat;
             background-attachment: fixed;
@@ -108,6 +108,14 @@
         .tour-button:hover {
             background-color: #45a049;
         }
+        .welcome-text {
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+        .instructions {
+            font-size: 1.1em;
+            font-weight: normal;
+        }
     </style>
     <link rel="stylesheet" href="https://unpkg.com/shepherd.js/dist/css/shepherd.css">
     <script src="https://unpkg.com/shepherd.js@8.3.1/dist/js/shepherd.min.js"></script>
@@ -145,19 +153,18 @@
     </header>
 
     <main>
-        <section id="welcome-section">
+        <section id="welcome-section" class="welcome-text">
             <h2>Welcome to the Smart Dog Breed Classifier!</h2>
             <p>This web application allows you to upload an image of a dog and find out its breed. We use a machine learning model trained using transfer learning, which leverages pre-trained models and fine-tunes them for specific tasks. This model supports classification among 115 dog breeds and was trained on a dataset of 16,944 training images.</p>
             <p>The vast majority of images used for training were obtained from the Stanford Dog Breed Dataset.</p>
             <p>Check out how the model performed on all 115 breeds on the breed results page for a visual exploration of images.</p>
             <p>Follow the simple steps below to get started:</p>
-            <ol>
+            <ol class="instructions">
                 <li>Click on <strong>Choose an Image</strong> to select a dog image from your device. The clearer the image of the dog, the better.</li>
                 <li>Once the image is displayed, click on <strong>Classify</strong> to predict the breed.</li>
                 <li>View the predicted breed and confidence level.</li>
                 <li>If you know the actual breed, you can confirm or deny the prediction to help improve our model.</li>
             </ol>
-
         </section>
 
         <section class="main-section">
@@ -210,7 +217,6 @@
                     <li><a href="/feedback">Feedback</a></li>
                     <li><a href="/terms">Terms of Service</a></li>
                     <li><a href="https://smartbookshelf.io" target="_blank">SmartBookshelf</a></li> <!-- New Link -->
-
                 </ul>
             </div>
         </div>

@@ -3,18 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <title>Privacy Policy - Smart Dog Breed Classifier</title>
     <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f8f8f8;
-            color: #333;
+                body, html {
             margin: 0;
             padding: 0;
+            font-family: 'Arial', sans-serif;
+            background-image: url('{{ url_for('static', filename='images/dogbackground.jpeg') }}');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
             display: flex;
             flex-direction: column;
             min-height: 100vh;
         }
+
+
+
 
         header {
             background-color: #2C3E50;
@@ -84,22 +91,50 @@
 
     <main>
         <section class="about-section">
-            <h2>Our Privacy Policy</h2>
-            <p>Last updated: May 2024</p>
+<h2>Our Privacy Policy</h2>
 
-            <p>Welcome to the Smart Dog Breed Classifier.</p>
+<p>Welcome to the Smart Dog Breed Classifier.</p>
 
-            <p>This Privacy Policy outlines what data we collect, why we collect it, and how we handle your information.</p>
+<p>This Privacy Policy outlines what data we collect, why we collect it, and how we handle your information.</p>
 
-            <p>Images you upload might be used to enhance the model's training.</p>
+<ul>
+    <li>
+        <strong>Images:</strong> Images you upload are saved on the Google Cloud Platform. Responses and images may also be used to enhance the model's training.
+    </li>
+    <li>
+        <strong>Usage Data:</strong> Information about how you use our services, including your interactions with the website and app, log data, and other related information.
+    </li>
+</ul>
 
-            <!-- You can add more sections based on your policy needs -->
+<h3>Data Usage</h3>
+<p>The data we collect is used to:</p>
+<ul>
+    <li>Provide, maintain, and improve our services.</li>
+    <li>Personalize your experience with our services.</li>
+    <li>Train and enhance our machine learning models.</li>
+    <li>Communicate with you, including responding to your inquiries and sending service-related updates.</li>
+</ul>
 
         </section>
     </main>
 
-    <footer class="site-footer">
-        <p>&copy; 2024 Smart Dog Breed Classifier. All rights reserved.</p>
-    </footer>
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-about">
+            <h3>SmartBreed Dog Classifier</h3>
+            <p>A simple dog breed classification application.</p>
+        </div>
+        <div class="footer-links">
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="/about">About Us</a></li>
+                <li><a href="/privacy_policy">Privacy Policy</a></li>
+                <li><a href="/feedback">Feedback</a></li>
+                <li><a href="/terms">Terms of Service</a></li>
+                <li><a href="https://smartbookshelf.io" target="_blank">SmartBookshelf</a></li>
+            </ul>
+        </div>
+    </div>
+</footer>
 </body>
 </html>

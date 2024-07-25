@@ -1,7 +1,7 @@
 # Ignore virtual environments
 .venv/
 .env
-
+.idea
 # Ignore instance and migrations directories
 instance/
 migrations/
