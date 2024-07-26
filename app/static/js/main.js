@@ -501,4 +501,6 @@ submitBreedBtn.addEventListener('click', function () {
     }
     // Fetch and populate breed names
     fetchBreedNames();
+
+
 });

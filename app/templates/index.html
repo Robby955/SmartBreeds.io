@@ -109,12 +109,29 @@
             background-color: #45a049;
         }
         .welcome-text {
-            font-size: 1.2em;
+            font-size: 1.1em;
             font-weight: bold;
         }
         .instructions {
-            font-size: 1.1em;
+            font-size: 0.9em;
             font-weight: normal;
+        }
+        .start-over-button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #ff6347; /* Tomato color */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: center;
+        }
+        .start-over-button:hover {
+            background-color: #e55347; /* Darker tomato color */
+        }
+        .hidden {
+            display: none;
         }
     </style>
     <link rel="stylesheet" href="https://unpkg.com/shepherd.js/dist/css/shepherd.css">
@@ -155,7 +172,8 @@
     <main>
         <section id="welcome-section" class="welcome-text">
             <h2>Welcome to the Smart Dog Breed Classifier!</h2>
-            <p>This web application allows you to upload an image of a dog and find out its breed. We use a machine learning model trained using transfer learning, which leverages pre-trained models and fine-tunes them for specific tasks. This model supports classification among 115 dog breeds and was trained on a dataset of 16,944 training images.</p>
+            <p>This web application allows you to upload an image of a dog and find out its breed. We use a machine learning model trained using transfer learning, which leverages pre-trained models and fine-tunes them for specific tasks.</p>
+            <p>This model supports classification among 115 dog breeds and was trained on a dataset of 16,944 training images.</p>
             <p>The vast majority of images used for training were obtained from the Stanford Dog Breed Dataset.</p>
             <p>Check out how the model performed on all 115 breeds on the breed results page for a visual exploration of images.</p>
             <p>Follow the simple steps below to get started:</p>
@@ -165,6 +183,9 @@
                 <li>View the predicted breed and confidence level.</li>
                 <li>If you know the actual breed, you can confirm or deny the prediction to help improve our model.</li>
             </ol>
+            <div class="tour-button">
+                <a href="/about">Watch Demo Video</a>
+            </div>
         </section>
 
         <section class="main-section">
@@ -179,6 +200,7 @@
             <div id="image-preview-container">
                 <img id="image-preview" alt=" " class="hidden">
             </div>
+            <button id="start-over-btn" class="start-over-button hidden" type="button" onclick="startOver()">Start Over</button>
         </section>
 
         <section id="result-section" class="hidden">

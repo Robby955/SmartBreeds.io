@@ -7,6 +7,8 @@
     <!-- Firebase SDK -->
     <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-auth-compat.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
     <script>
         // Firebase configuration
         const firebaseConfig = {
@@ -140,10 +142,35 @@
             margin: 0;
             padding: 0;
             display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .home-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+        }
+
+        .home-button a {
+            background-color: #3498db;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 16px;
+            text-align: center;
+        }
+
+        .home-button a:hover {
+            background-color: #2980b9;
+        }
+
+        .content {
+            flex: 1;
+            display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            position: relative;
         }
 
         .container {
@@ -217,24 +244,35 @@
             background: #333;
         }
 
-        .home-button {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-        }
-
-        .home-button a {
-            background-color: #3498db;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 5px;
-            text-decoration: none;
-            font-size: 16px;
+        footer {
+            background-color: #333;
+            color: #fff;
             text-align: center;
+            padding: 10px 0;
+            width: 100%;
         }
 
-        .home-button a:hover {
-            background-color: #2980b9;
+        .footer-about,
+        .footer-links {
+            margin-bottom: 10px;
+        }
+
+        .footer-links ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-links ul li {
+            margin: 5px 0;
+        }
+
+        .footer-links ul li a {
+            color: #3498db;
+            text-decoration: none;
+        }
+
+        .footer-links ul li a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
@@ -242,41 +280,43 @@
     <div class="home-button">
         <a href="/">Home</a>
     </div>
-    <div class="container">
-        <h2>Login</h2>
-        <form id="loginForm">
-            <input type="text" id="loginEmail" placeholder="Email" required autocomplete="email">
-            <input type="password" id="loginPassword" placeholder="Password" required autocomplete="current-password">
-            <button type="button" onclick="loginWithEmail();">Login with Email</button>
-        </form>
-        <div class="social-buttons">
-            <button class="social-button google" onclick="googleSignIn();">Login with Google</button>
-            <button class="social-button github" onclick="githubSignIn();">Login with GitHub</button>
-        </div>
-        <h2>Register</h2>
-        <form id="registerForm">
-            <input type="text" id="registerEmail" placeholder="Email" required autocomplete="email">
-            <input type="password" id="registerPassword" placeholder="Password" required autocomplete="new-password">
-            <button type="button" class="social-button register" onclick="registerWithEmail();">Register</button>
-        </form>
-    </div>
-<footer class="site-footer">
-    <div class="container">
-        <div class="footer-about">
-            <h3>SmartBreed Dog Classifier</h3>
-            <p>A simple dog breed classification application.</p>
-        </div>
-        <div class="footer-links">
-            <h3>Quick Links</h3>
-            <ul>
-                <li><a href="/about">About Us</a></li>
-                <li><a href="/privacy_policy">Privacy Policy</a></li>
-                <li><a href="/feedback">Feedback</a></li>
-                <li><a href="/terms">Terms of Service</a></li>
-                <li><a href="https://smartbookshelf.io" target="_blank">SmartBookshelf</a></li>
-            </ul>
+    <div class="content">
+        <div class="container">
+            <h2>Login</h2>
+            <form id="loginForm">
+                <input type="text" id="loginEmail" placeholder="Email" required autocomplete="email">
+                <input type="password" id="loginPassword" placeholder="Password" required autocomplete="current-password">
+                <button type="button" onclick="loginWithEmail();">Login with Email</button>
+            </form>
+            <div class="social-buttons">
+                <button class="social-button google" onclick="googleSignIn();">Login with Google</button>
+                <button class="social-button github" onclick="githubSignIn();">Login with GitHub</button>
+            </div>
+            <h2>Register</h2>
+            <form id="registerForm">
+                <input type="text" id="registerEmail" placeholder="Email" required autocomplete="email">
+                <input type="password" id="registerPassword" placeholder="Password" required autocomplete="new-password">
+                <button type="button" class="social-button register" onclick="registerWithEmail();">Register</button>
+            </form>
         </div>
     </div>
-</footer>
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-about">
+                <h3>SmartBreed Dog Classifier</h3>
+                <p>A simple dog breed classification application.</p>
+            </div>
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="/about">About Us</a></li>
+                    <li><a href="/privacy_policy">Privacy Policy</a></li>
+                    <li><a href="/feedback">Feedback</a></li>
+                    <li><a href="/terms">Terms of Service</a></li>
+                    <li><a href="https://smartbookshelf.io" target="_blank">SmartBookshelf</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>
