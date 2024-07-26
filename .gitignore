@@ -1,12 +1,15 @@
 # Ignore virtual environments
 .venv/
 .env
-.idea
-# Ignore instance and migrations directories
+.idea/
+client/
+
+
+#  instance and migrations directories
 instance/
 migrations/
 
-# Ignore training and model files
+#  training and model files
 models/
 training_history/
 result_summary*
@@ -20,7 +23,7 @@ updated_classifier.h5
 best_classifier_model.h5
 best_model_weights.weights.h5
 
-# Ignore databases
+#  databases
 *.sqlite3
 *.db
 identifier.sqlite
@@ -33,10 +36,7 @@ test.db
 firebase.json
 database.rules.json
 
-# Ignore logs
 *.log
-
-# Ignore temporary and cached files
 *.pyc
 __pycache__/
 *.bak
@@ -60,6 +60,11 @@ combined_metrics_history_20240403-204919.csv
 result_summary/
 downloaded_model/
 all_breeds_root/
+templates/index2.html
+templates/gan_playground.html
+templates/
+create_admin.py
+
 
 # Ignore miscellaneous files
 analyzeModel.py
@@ -73,6 +78,7 @@ lookatDir.py
 ideas.txt
 gpu_setup.py
 getFiles.py
+auth.py
 
 # Ignore any hidden system files
 .DS_Store
