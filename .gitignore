@@ -80,8 +80,13 @@ gpu_setup.py
 getFiles.py
 auth.py
 
+
+app/firebase-config.js
+
 # Ignore any hidden system files
 .DS_Store
 Thumbs.db
 .gcloudignore
 .gitignor
+
+
