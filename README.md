@@ -62,22 +62,7 @@ Docker is used extensively in this project to ensure consistency and portability
 - **Isolation:** Each component runs in its own container, preventing conflicts and simplifying debugging.
 - **Scalability:** Containers can be easily scaled up or down based on demand.
 - **Portability:** Docker containers can run on any system that supports Docker, making it easy to move the application between different environments.
-
-## Screenshots
-
-Here are some screenshots of the SmartBreed application in action:
-
-<img src="img/pic1.png" alt="Home Page" width="400">
-
-
-<img src="img/pic3.png" alt="Classify" width="400">
-
-
-<img src="img/pic4.png" alt="BreedDetail" width="400">
-
-
-<img src="img/pic8.png"  width="400">
-
+- 
 ## Future Enhancements
 
 - Implement a more robust active learning framework to optimize the retraining cycle.
