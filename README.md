@@ -3,7 +3,9 @@
 
 AI-driven web application designed to accurately identify dog breeds from user-uploaded images. This comprehensive project integrates various advanced technologies and methodologies, including machine learning, deep learning, and web development frameworks, to deliver a seamless and interactive user experience.
 
-Access it at https://smartbreed.io or click [here](https://smartbreed.io).
+Access it at https://smartbreed.io or click [here](https://smartbreed.io), or directly on my Flask app [here](https://my-flask-app-668071408107.northamerica-northeast1.run.app/).
+
+![landing-page](images/smartbreed_landing.png)
 
 This application is a deep learning model based on MobileNetV2, a powerful and efficient convolutional neural network optimized for speed and accuracy, making it ideal for real-time applications.
 
@@ -32,6 +34,10 @@ This project demonstrates an integration of cloud technologies and machine learn
 8. **OAuth Integration with Firebase:** Firebase Authentication is used to manage user authentication, allowing users to log in with Google, GitHub, or traditional email and password via Flask. This integration provides a seamless and secure login experience, leveraging Firebase's robust authentication mechanisms.
 
 9. **HTTPS Domain:** The application is hosted on a secure HTTPS domain, ensuring encrypted communication between the client and the server. This enhances the security and privacy of user data.
+
+
+![about_page](images/smartbreed_about.png)
+
 
 ## Technologies Used
 
@@ -62,7 +68,13 @@ Docker is used extensively in this project to ensure consistency and portability
 - **Isolation:** Each component runs in its own container, preventing conflicts and simplifying debugging.
 - **Scalability:** Containers can be easily scaled up or down based on demand.
 - **Portability:** Docker containers can run on any system that supports Docker, making it easy to move the application between different environments.
-- 
+
+## Results Page:
+
+![example](images/resultspage.png)
+
+
+
 ## Future Enhancements
 
 - Implement a more robust active learning framework to optimize the retraining cycle.
