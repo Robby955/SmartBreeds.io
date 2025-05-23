@@ -3,7 +3,7 @@
 
 AI-driven web application designed to accurately identify dog breeds from user-uploaded images. This comprehensive project integrates various advanced technologies and methodologies, including machine learning, deep learning, and web development frameworks, to deliver a seamless and interactive user experience.
 
-Access it at https://smartbreed.io or click [here](https://smartbreeds.io)
+Access it at https://smartbreeds.io or click [here](https://smartbreeds.io)
 
 ![landing-page](images/smartbreed_landing.png)
 
