@@ -1,9 +1,9 @@
 
-# SmartBreed
+# SmartBreeds.io
 
 AI-driven web application designed to accurately identify dog breeds from user-uploaded images. This comprehensive project integrates various advanced technologies and methodologies, including machine learning, deep learning, and web development frameworks, to deliver a seamless and interactive user experience.
 
-Access it at https://smartbreed.io or click [here](https://smartbreed.io), or directly on my Flask app [here](https://my-flask-app-668071408107.northamerica-northeast1.run.app/).
+Access it at https://smartbreed.io or click [here](https://smartbreeds.io)
 
 ![landing-page](images/smartbreed_landing.png)
 
